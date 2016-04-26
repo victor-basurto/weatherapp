@@ -1,0 +1,27 @@
+<p>
+	<a href="#/">Back to Search</a>
+</p>
+<div class="col-md-12 no-padding">
+	<p class="col-md-6">This is {{ name }} page for {{ city }}</p>
+
+	<div class="dropdown col-md-6">
+		<button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			Days:
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+			<li><a href="#/forecast/2">2 Days</a></li>
+			<li><a href="#/forecast/3">3 Days</a></li>
+			<li><a href="#/forecast/4">4 Days</a></li>
+			<li><a href="#/forecast/5">5 Days</a></li>
+			<li><a href="#/forecast/6">6 Days</a></li>
+		</ul>
+	</div>	
+</div>
+<div ng-repeat="w in weatherResult.list">
+	<div class="row">
+		<div class="col-md-12">
+			<weather-results weather-day="w" fahrenheit-converter="convertToFahrenheit( dg )" date-format-converter="dateFormat( dayTime )" formatted-date="EEEE, MMM, d, yyyy"></weather-results>
+		</div>
+	</div>
+</div>
