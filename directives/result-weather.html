@@ -1,8 +1,14 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">{{ dateFormatConverter({ dayTime: weatherDay.dt }) | date: formattedDate }}</h3>
-	</div>
+	</div><!-- ./ panel-heading -->
 	<div class="panel-body">
-		Daytime Temperature: {{ fahrenheitConverter({ dg: weatherDay.temp.day }) }}
-	</div>
-</div>
+		Daytime Temperature: {{ fahrenheitConverter({ dg: weatherDay.temp.day }) }}<br/>
+		Nightime Temperature: {{ fahrenheitConverter({ dg: weatherDay.temp.night }) }}<br/>
+		Min Temperature: {{ fahrenheitConverter({ dg: weatherDay.temp.min }) }}
+		<p>Max Temperature: {{ fahrenheitConverter({ dg: weatherDay.temp.max }) }}</p>
+		<div ng-repeat="res in weatherDay.weather">
+			<p>Description: {{ res.description }}</p>
+		</div>
+	</div><!-- ./ panel-body -->
+</div><!-- ./ panel -->

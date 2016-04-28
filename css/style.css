@@ -2,6 +2,5 @@ html, body, input, select, textarea {
 	font-size: 1.05em !important;
 	background: #eaeaea;
 }
-.no-padding, .no-padding p, .no-padding div {
-	padding: 0;
-}
+.no-padding, .no-padding p, .no-padding div { padding: 0; }
+.mrgn-bttm, #dropdownMenu { margin-bottom: 5px; }
