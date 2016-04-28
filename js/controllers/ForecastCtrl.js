@@ -1,34 +1,25 @@
+/**
+ * Weather API Controller
+ * @param {Service} SearchCity - Search by city
+ * @param {Service} WeatherData - Retrieve data from weather api 
+ */
 WeatherApp.controller('ForecastCtrl', [
 	'$scope', 
-	'$resource',
 	'$routeParams',
-	'SearchCity', 
-	function( $scope, $resource, $routeParams, SearchCity ) {
-
-		// Root Connection
-		var WEATHERROOT = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
+	'SearchCity',
+	'WeatherData', 
+	function( $scope, $routeParams, SearchCity, WeatherData ) {
 
 		$scope.name = 'Forecast';
 		$scope.city = SearchCity.city;			// Value from SearchCity Service
 		$scope.days = $routeParams.days || 2;	// days displayed
 
-		// API Connection
-		$scope.weatherAPI = 
-			$resource(WEATHERROOT, {
-					callback: "JSON_CALLBACK" 
-				},{ 
-					get: { 
-						method: "JSONP" 
-					} 
-				});
-
-		// User Params
-		$scope.weatherResult = 
-			$scope.weatherAPI.get({ 
-				q: $scope.city, 
-				cnt: $scope.days, 
-				appid: "3c9b3f6d94643e8ec390b621a9199339" 
-			});
+		/**
+		 * Get WeatherResults
+		 * @params {String} city and days - user input
+		 */
+		$scope.weatherResult = WeatherData.getWeatherData( $scope.city, $scope.days );
+			
 
 		/**
 		 * Return Fharenheit degrees
